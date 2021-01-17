@@ -1,0 +1,57 @@
+---
+title: "Coronavirus in Washington By Demographics"
+subtitle: "INFO201 Group Project - Exploratory Analysis"
+author: "Yujia S., Chandra B., Natassja B., Grant Y., Minjie K."
+date: "11/12/2020"
+output: html_document
+---
+
+```{r setup, include = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("./scripts/summary.R")
+source("./scripts/BarChart.R")
+source("./scripts/ViolinPlot.R")
+source("./scripts/tables.R")
+source("./scripts/smoothPlot.R")
+library("knitr")
+```
+
+## Introduction
+As not only individuals who are experiencing this unprecedented time of a global pandemic and emergency, but as students at the University of Washington, where fellow peers and others have unfortunately been not so pandemic-friendly in their practices, causing outbreaks to surge, Covid-19 and the current response has been all-consuming in our lives through its impact on our sense of normalcy and safety as it has for people of any race. As we continue to see numbers rise and tensions grow, this issue and the overall instance have grown to be a great topic of interest for our group. It has deeply affected our families and us individually, and we are eager to learn and discover more by delving deep into the subject. We are interested in finding out how Covid-19 has impacted people of different race in the United States based on two of the datasets we've found(https://github.com/info201b-au20/project-covid/blob/gh-pages/data/PUBLIC_CDC_Event_Date_SARS.xlsx, https://github.com/info201b-au20/project-covid/blob/gh-pages/data/Race%20Data%20Entry%20-%20CRDT.csv).
+
+## Summary
+In the summary section, the data list has `summary_info$num_observations` observations and `num_features` columns. We wanted to explore the number of people of different races who were tested positive for Covid-19. First off, we figured out the number of features and observations of the dataset by creating a list. Then we figured out the state that has had the highest number of cases `r summary_info$state_highest_cases`, as well as state that has had the highest number of deaths `summary_info$most_deaths`. Next, we separately created functions to figure out the state that has had the highest number of cases of white Americans, African Americans, and Asian Americans. We figured out the the state that has had the highest number of cases of white Americans is `summary_info$state_max_white`, and the state that has had the highest number of cases of African Americans is `summary_info$state_max_black`, and the state that has had the highest number of cases of Asian Americans is `summary_info$state_max_asian`.
+
+## Table
+```{r}
+kable(weekly_cases_by_age)
+```
+This table summarizes the number of weekly new cases by different age groups. According to the table, the age group between 20 to 39 years old has the most amount of people who tested positive for Covid-19 each week until the date of 10/18/2020. The age group over 80 years old has the least amount of people who tested postitive for Covid-19 each week until the date of 10/18/2020.
+```{r}
+kable(cumulative_cases_by_race)
+```
+This table summarizes the cumulative number of cases over time by different races in Washington State. According to the table, there are the most number of Americans of unkown races who tested positive for Covid-19 until the date of 6/28/2020. After 6/28/2020, there are the most number of Hispanic/Latino Americans who tested positive for Covid-19. There are the least number of Alaska Native Americans who tested positive for Covid-19 over time according to the table.
+```{r}
+kable(rate_cases_by_race)
+```
+This table summarizes the rate of increase of new Covid-19 cases by racial group in Washington State by percent. According to the table, on 7/19/2020, the rate of increase of new Covid-19 cases is the greatest among African Americans, which is by 1290 percent. According to the table, African Americans also has the greatest rate of increase of new Covid-19 cases over time.
+
+## Visualization
+#### Chart 1: Cumulative Amount of Total Reported COVID-19 Cases in the State of Washington by Racial Groups
+```{r, fig.align = 'center', message = FALSE}
+plot_two
+```
+The purpose of this chart is to show the cumulative amount of total reported COVID-19 cases in the state of Washington by racial groups. Due to the nature of the chart being cumulative, a bar chart accurately captures the total value (cases) of the different categories (racial groups). What is notable about this chart is the overwhelming amount of race “Unknown” cases there are as that impacts the data and alters the information drawn from the set as well. It is also important to note the large amount of cases recorded as “White” and “Hispanic/Latino” in comparison to the other groups considered. These two observations are especially insightful in terms of the disparities seen in recording cases by race, which lead to a more narrowed and misleading perception as to how the pandemic is effecting certain communities. For example, the Black community as well as the American Indian community, which has notably been heavily impacted and harmed by COVID-19, but the data seems to paint a different tale. On the other hand, the number surrounding Hispanic/Latino populations seem to align with what we know in terms of how heavily migrant workers in more rural, agricultural parts of Washington have been ravaged by the virus.
+
+#### Chart 2: How Different Age Groups Are Affected By Covid-19
+```{r, fig.align = 'center', message = FALSE}
+plot
+```
+The purpose of including this chart is to see how different age groups are affected by Covid-19, and to see which groups contribute most the number of cases present. In this plot we are able to that the most mean number of weekly cases is from the age 20-39 group, this group is also has the max number of cases in a pparticular week during the time of data collection. This data was collected from Januarary 16, 2020 to October 18, 2020.  The graph shows the average weekly cases from the indicated beginning of collection to the end of the data collection.
+
+#### Chart 3: Total amount of death over time
+```{r, fig.align = 'center', message = FALSE}
+smooth_plot_chart
+```
+The purpose of the chart is to visually display how does the speed and the number of death cases due to covid 19 in Washington over time. From the graph, we could see that the number of cases increase steadly as time passby. The acceleration of the death increase appears to be negative in July. There are some variations between the best fit smooth line, but there is no dramatic increase or descrease in short period of time.This gives us a better understanding of the total number of death cases over time. 
+
