@@ -1,7 +1,7 @@
 # **U.S. Coronavirus Data Analysis and Visualization**
 I worked in a team of five to create a coronavirus data visualization using R Shiny.
 
-Access it here: https://burnhc.shinyapps.io/project-covid/
+Deployed at: https://burnhc.shinyapps.io/project-covid/
 
 ## About the Data
 
